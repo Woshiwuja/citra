@@ -1,28 +1,39 @@
+# Downloads
+
+Linux prebuilt binaries are available on the Releases page!
+
 # Building for Linux
+
 An unofficial PKGBUILD of Citra is available for Arch Linux on the AUR.
+
 # Dependencies:
 
 You’ll need to download and install the following to build Citra:
+
 ## SDL2
+
         Deb: sudo apt install libsdl2-dev
         Arch: pacman -S sdl2
         Fedora: sudo dnf install SDL2-devel
         OpenSUSE: zypper in libSDL2-devel
+
 ## OpenSSL (optional)
+
         Deb: sudo apt install libssl-dev
         Arch: pacman -S openssl-1.0
         Fedora: sudo dnf install openssl-devel
         OpenSUSE: zypper in openssl-devel
 
 ## Qt 6.2+
+
 Only 6.2+ versions are tested. Lower version might or might not work. See the section Install new Qt version below if your distro does not provide a sufficient version of Qt
 Deb: sudo apt install qt6-base-dev qt6-base-private-dev qt6-multimedia-dev
-            You may also need apt install qt6-l10n-tools qt6-tools-dev qt6-tools-dev-tools to build with translation support
-            You may also need apt install libgl-dev if you run into WrapOpenGL issues while configuring with CMake.
-        Arch: pacman -S qt6-base qt6-multimedia qt6-multimedia-ffmpeg
-            You will also need to install a multimedia backend, either qt6-multimedia-ffmpeg or qt6-multimedia-gstreamer.
-        Fedora: sudo dnf install qt6-qtbase-devel qt6-qtbase-private-devel qt6-qtmultimedia-devel
-        OpenSUSE: zypper in qt6-base qt6-multimedia
+You may also need apt install qt6-l10n-tools qt6-tools-dev qt6-tools-dev-tools to build with translation support
+You may also need apt install libgl-dev if you run into WrapOpenGL issues while configuring with CMake.
+Arch: pacman -S qt6-base qt6-multimedia qt6-multimedia-ffmpeg
+You will also need to install a multimedia backend, either qt6-multimedia-ffmpeg or qt6-multimedia-gstreamer.
+Fedora: sudo dnf install qt6-qtbase-devel qt6-qtbase-private-devel qt6-qtmultimedia-devel
+OpenSUSE: zypper in qt6-base qt6-multimedia
 
     PORTAUDIO
         Deb: sudo apt install libasound-dev
@@ -103,14 +114,17 @@ Deb: sudo apt install qt6-base-dev qt6-base-private-dev qt6-multimedia-dev
     Note on Boost library: you don’t need to install Boost library on your system, because citra provides a bundled trimmed Boost library. However, if you already have Boost library installed on your system, please make sure its version is at least 1.66 (which contains a bug fix for GCC 7), otherwise compilation would fail.
 
 Cloning Citra in Git:
+
 ```
 git clone --recursive https://github.com/citra-emu/citra
 cd citra
 ```
+
 The --recursive option automatically clones the required Git submodules too.
 Building Citra in Debug Mode (Slow):
 
 Using gcc:
+
 ```
 mkdir build
 cd build
@@ -118,11 +132,13 @@ cmake ../
 cmake --build . -- -j"$(nproc)"
 sudo make install (optional)
 ```
+
 Optionally, you can use “cmake -i ..” to adjust various options (e.g. disable the Qt GUI).
 
 Using clang:
 
 Note: It is important you use libc++, otherwise your build will likely fail:
+
 ```
 mkdir build
 cd build
@@ -132,8 +148,10 @@ cmake .. -DCMAKE_CXX_COMPILER=clang++-5.0 \
 cmake --build . -- -j"$(nproc)"
 sudo make install (optional)
 ```
+
 If you get a weird compile error related to std::span conversions, make sure you are using clang and libc++ 15 or up. This is an issue with libc++ 14.
 Building Citra in Release Mode (Optimized):
+
 ```
 mkdir build
 cd build
@@ -141,7 +159,9 @@ cmake .. -DCMAKE_BUILD_TYPE=Release
 cmake --build . -- -j"$(nproc)"
 sudo make install (optional)
 ```
+
 Building with debug symbols:
+
 ```
 mkdir build
 cd build
@@ -149,19 +169,23 @@ cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo
 cmake --build . -- -j"$(nproc)"
 sudo make install (optional)
 ```
+
 Running without installing:
 
 After building, the binaries citra, citra-qt and citra-room (depending on your build options) will end up in build/bin/.
 
 # SDL
+
 cd build/bin/
 ./citra
 
 # Qt
+
 cd build/bin/
 ./citra-qt
 
 # Dedicated room
+
 cd build/bin/
 ./citra-room
 
@@ -180,4 +204,3 @@ If your distribution’s version of Qt is too old, there are a few places you ma
     This Ubuntu PPA contains backports of Qt 6 to various older versions: https://launchpad.net/~savoury1/+archive/ubuntu/qt-6-2
 
     This unofficial CLI installer allows downloading and installing the latest first-party builds of Qt to your system (whether it works against your distribution may vary): https://github.com/miurahr/aqtinstall
-
