@@ -1,7 +1,10 @@
 # Downloads
 
 Linux prebuilt binaries are available on the Releases page!
+
 If you download them please star the repo so more people can find it!
+
+Windows version was obtained trought Archive.org
 
 # Building for Linux
 
