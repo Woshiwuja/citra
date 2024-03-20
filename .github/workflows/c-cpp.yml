@@ -16,7 +16,8 @@ jobs:
     - uses: actions/checkout@v3
       with:
         submodules: recursive
-          
+    - name: submodules
+      run: git submodule update --init --recursive
     - name: install-qt6
       run: sudo apt install qt6-base-dev qt6-base-private-dev qt6-multimedia-dev
     - name: install-sld2
