@@ -7,11 +7,14 @@ on:
     branches: [ "main" ]
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+    - name: install-qt6
+      run: apt install qt6
     - name: make
       run: cmake .
