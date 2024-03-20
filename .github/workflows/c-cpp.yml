@@ -22,7 +22,16 @@ jobs:
       run: sudo apt install libssl-dev
     - name: install-audio
       run: sudo apt install libasound-dev
-    - name: install-vulkan
-      run: wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc & sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-jammy.list http://packages.lunarg.com/vulkan/lunarg-vulkan-jammy.list & sudo apt update & sudo apt install vulkan-sdk
+    - name: Install Vulkan SDK
+  # You may pin to the exact commit or the version.
+  # uses: humbletim/install-vulkan-sdk@6aadcb709dbb8e4096dad20e35adaefec83d4b45
+      uses: humbletim/install-vulkan-sdk@v1.1.1
+      with:
+    # official Vulkan SDK release version to use
+        version: latest # default is latest
+    # whether to cache the downloaded vulkan_sdk.* installer file (using github actions/cache)
+        cache: yes # optional
+    # silence GitHub Annotation notice displayed if resolving `latest` into Vulkan SDK release number
+        quiet: true # optional
     - name: make
       run: cmake .
