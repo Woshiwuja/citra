@@ -15,6 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: install-qt6
-      run: sudo apt install qt6
+      run: sudo apt install qt6-base-dev qt6-base-private-dev qt6-multimedia-dev
+    - name: install-sld2
+      run: sudo apt install libsdl2-dev
+    - name: install-openssl
+      run: sudo apt install libssl-dev
+    - name: install-audio
+      run: sudo apt install libasound-dev
+    - name: install-vulkan
+      run: wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc & sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-jammy.list http://packages.lunarg.com/vulkan/lunarg-vulkan-jammy.list & sudo apt update & sudo apt install vulkan-sdk
     - name: make
       run: cmake .
