@@ -1,3 +1,7 @@
+# Contribute
+If you know stuff about CI/CD and wanna help make the pipeline work submit a pull request :)
+
+
 # Downloads
 
 Linux prebuilt binaries are available on the Releases page!
